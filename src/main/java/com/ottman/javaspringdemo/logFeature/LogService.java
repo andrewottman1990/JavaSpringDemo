@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.StopWatch;
-
-import io.micrometer.common.lang.Nullable;
 
 /**
  * Service for interacting with logs from a ficticious system
@@ -29,11 +26,10 @@ public class LogService {
      * @return List of all {@link Log}s
      */
     public List<Log> GetAllLogs(int logsSize) {
-        var functionLogs = new StopWatch();
-        functionLogs.start();
+        var startTime = System.currentTimeMillis();
 
         ArrayList<CompletableFuture<ArrayList<Log>>> futures = new ArrayList<CompletableFuture<ArrayList<Log>>>(logTypes.size());
-        List<Log> allLogs = new ArrayList<Log>();
+        List<Log> allLogs = new ArrayList<Log>(logTypes.size() * logsSize);
         
         // For each type of ficticious log, we will create a CompletableFuture and asyncronously get logs.
         for (String logTypeString : logTypes) {
@@ -48,8 +44,13 @@ public class LogService {
         var allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
         allFutures.join();
 
-        functionLogs.stop();
-        System.out.println("GetAllLogs: " + functionLogs.getTotalTimeSeconds());
+        var getLogsCompleteTime = System.currentTimeMillis();
+        System.out.println("All GetLogs complete: " + (getLogsCompleteTime - startTime));
+
+        // Sort logs by time descending
+        allLogs.sort(new LogSortTimeDescendingComparator());
+
+        System.out.println("Sort logs: " + (System.currentTimeMillis() - getLogsCompleteTime));
 
         return allLogs;
     }

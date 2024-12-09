@@ -18,8 +18,7 @@ public class LogRepository {
      * @return An {@link ArrayList} of logs of the given type and of the given amount.
      */
     public ArrayList<Log> GetLogsByType(String logType, int numberOfLogs) {
-        var watch = new StopWatch();
-        watch.start();
+        var startTime = System.currentTimeMillis();
 
         System.out.println("GetLogsByType start " + logType);
 
@@ -31,8 +30,7 @@ public class LogRepository {
             logList.add(log);
         }
 
-        watch.stop();
-        System.out.println("GetLogsByType " + logType + ": " + watch.getTotalTimeSeconds());
+        System.out.println("GetLogsByType " + logType + ": " + (System.currentTimeMillis() - startTime));
 
         return logList;
     }
