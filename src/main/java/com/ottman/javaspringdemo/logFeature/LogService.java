@@ -34,7 +34,7 @@ public class LogService {
         // For each type of ficticious log, we will create a CompletableFuture and asyncronously get logs.
         for (String logTypeString : logTypes) {
             var logArrayFuture = CompletableFuture.supplyAsync(() -> logRepository.GetLogsByType(logTypeString, logsSize));
-            logArrayFuture.thenAccept(logs -> allLogs.addAll(logs)); // 
+            logArrayFuture.thenAccept(logs -> allLogs.addAll(logs));
 
             // Add this to our list of futures
             futures.add(logArrayFuture);
