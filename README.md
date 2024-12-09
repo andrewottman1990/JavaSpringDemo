@@ -6,5 +6,11 @@ C# and Java have similarities in syntax, and Java + Spring Boot has similar capa
 
 ## Project Features
 
-1. An API to demonstrate concurrency with CompleteableFuture (TODO)
-2. An API to demonstrate protecting endpoints with JWT and OAuth (TODO)
+- logFeature: An API to demonstrate concurrency with CompleteableFuture (TODO)
+- An API to demonstrate protecting endpoints with JWT and OAuth (TODO)
+
+## Other concepts demonstrated
+
+- Industry standard project structure
+- Dependency injection
+- Asynchronous communication through documentation
