@@ -28,6 +28,7 @@ public class Log {
         int currentYear = LocalDate.now().getYear();
 
         long minEpoch = LocalDateTime.of(currentYear, 1, 1, 0, 0, 0).toEpochSecond(ZoneOffset.UTC);
+        // The upper bound for random is exclusive, so use 1/1 of the next year rather than 12/31 of current year
         long maxEpoch = LocalDateTime.of(currentYear + 1, 1, 1, 0, 0, 0).toEpochSecond(ZoneOffset.UTC);
 
         var random = new Random();
