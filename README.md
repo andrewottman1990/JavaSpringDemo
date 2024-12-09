@@ -6,7 +6,7 @@ C# and Java have similarities in syntax, and Java + Spring Boot has similar capa
 
 ## Project Features
 
-- logFeature: An API to demonstrate concurrency with CompleteableFuture (Done: java/com/ottman/javaspringdemo/logFeature)
+- logFeature: An API to demonstrate concurrency with CompleteableFuture. Located at java/com/ottman/javaspringdemo/logFeature. See "LOG README.md" for more information.
 
 ## Future Features
 
